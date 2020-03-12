@@ -4,7 +4,7 @@ class ViewController: UIViewController {
     private lazy var timerView = TimerView()
     private var activeTimer: Timer?
     private var buttonTaps = 0
-
+    
     
     override func loadView() {
         view = timerView
@@ -14,11 +14,11 @@ class ViewController: UIViewController {
     
     @objc func buttonTapped(_ sender: UIButton) {
         if buttonTaps == 0 {
-           startTapped()
+            startTapped()
         } else if buttonTaps == 1 {
-           stopTapped()
+            stopTapped()
         } else {
-           resetTapped()
+            resetTapped()
         }
     }
     
@@ -33,7 +33,7 @@ class ViewController: UIViewController {
             let duration = currentDate.timeIntervalSince(startDate)
             
             func formatDuration(DoubleDuration: (Double) -> String) {
-                // make number formatter function to format the TimeInterval Double into a String??
+                // make number formatter function to format the TimeInterval Double into a String?
             }
             
             self.timerView.timerLabel.text = "\(duration)"
@@ -61,11 +61,7 @@ class ViewController: UIViewController {
         timerView.actionButton.setTitle("START", for: .normal)
         timerView.actionButton.setTitleColor(.blue, for: .normal)
         timerView.timerLabel.text = "0.00"
-
-
     }
-    
-    // homework: number formatting, look prettier, turn button into toggle that starts and stops the timer, add other labels
 }
 
 
@@ -93,8 +89,6 @@ class TimerView: UIView {
         actionButton.layer.cornerRadius = 5.0
         actionButton.setTitle("START", for: .normal)
         actionButton.setTitleColor(.blue, for: .normal)
-        
-        
     }
     
     required init?(coder: NSCoder) {
@@ -102,7 +96,6 @@ class TimerView: UIView {
     }
     
     func installContraints() {
-        
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         let titleTop = NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .top, multiplier: 1, constant: 10)

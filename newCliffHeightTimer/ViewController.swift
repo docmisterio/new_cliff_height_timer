@@ -3,7 +3,12 @@ import UIKit
 class ViewController: UIViewController {
     private lazy var timerView = TimerView()
     private var activeTimer: Timer?
-    private var buttonTaps = 0
+    private var timerState: TimerState = .ready
+    enum TimerState {
+        case ready
+        case running
+        case stopped
+    }
     
     
     override func loadView() {
@@ -12,18 +17,19 @@ class ViewController: UIViewController {
         timerView.actionButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     
-    @objc func buttonTapped(_ sender: UIButton) {
-        if buttonTaps == 0 {
+    @objc func buttonTapped() {
+        switch timerState {
+        case .ready:
             startTapped()
-        } else if buttonTaps == 1 {
+        case .running:
             stopTapped()
-        } else {
-            resetTapped()
+        case .stopped:
+             resetTapped()
         }
     }
     
     func startTapped() {
-        buttonTaps += 1
+        timerState = .running
         print("start tapped")
         activeTimer?.invalidate()
         
@@ -44,9 +50,9 @@ class ViewController: UIViewController {
     }
     
     func stopTapped() {
+        timerState = .stopped
         print("stop tapped")
         activeTimer?.invalidate()
-        buttonTaps += 1
         
         timerView.actionButton.setTitle("RESET", for: .normal)
         timerView.actionButton.setTitleColor(.black, for: .normal)
@@ -54,8 +60,8 @@ class ViewController: UIViewController {
     }
     
     func resetTapped() {
+        timerState = .ready
         print("reset tapped")
-        buttonTaps = 0
         
         timerView.actionButton.backgroundColor = .white
         timerView.actionButton.setTitle("START", for: .normal)
@@ -111,9 +117,9 @@ class TimerView: UIView {
         actionButton.translatesAutoresizingMaskIntoConstraints = false
         
         let buttonBottom = NSLayoutConstraint(item: actionButton, attribute: .bottom, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: 10)
-        let buttonLeading = NSLayoutConstraint(item: actionButton, attribute: .leading, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .leading, multiplier: 1, constant: 10)
-        let buttonTrailing = NSLayoutConstraint(item: actionButton, attribute: .trailing, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .trailing, multiplier: 1, constant: -10)
+        let buttonCenter = NSLayoutConstraint(item: actionButton, attribute: .centerX, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .centerX, multiplier: 1, constant: 0)
+        let buttonMaxWidth = NSLayoutConstraint(item: actionButton, attribute: .width, relatedBy: .lessThanOrEqual, toItem: self.safeAreaLayoutGuide, attribute: .width, multiplier: 1, constant: -20)
         
-        NSLayoutConstraint.activate([titleTop, titleLeading, titleTrailing, timerTop, timerLeading, timerTrailing, buttonBottom, buttonLeading, buttonTrailing])
+        NSLayoutConstraint.activate([titleTop, titleLeading, titleTrailing, timerTop, timerLeading, timerTrailing, buttonBottom, buttonCenter, buttonMaxWidth])
     }
 }

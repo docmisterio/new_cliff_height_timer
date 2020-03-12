@@ -4,12 +4,13 @@ class ViewController: UIViewController {
     private lazy var timerView = TimerView()
     private var activeTimer: Timer?
     private var timerState: TimerState = .ready
+    private let labelFormatter = LabelFormatter()
+    
     enum TimerState {
         case ready
         case running
         case stopped
     }
-    
     
     override func loadView() {
         view = timerView
@@ -34,15 +35,13 @@ class ViewController: UIViewController {
         activeTimer?.invalidate()
         
         let startDate = Date()
-        activeTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { _ in
+        activeTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { _ in
             let currentDate = Date()
             let duration = currentDate.timeIntervalSince(startDate)
             
-            func formatDuration(DoubleDuration: (Double) -> String) {
-                // make number formatter function to format the TimeInterval Double into a String?
-            }
+            let formattedDuration = self.labelFormatter.format(duration)
             
-            self.timerView.timerLabel.text = "\(duration)"
+            self.timerView.timerLabel.text = formattedDuration
         })
         timerView.actionButton.setTitle("STOP", for: .normal)
         timerView.actionButton.setTitleColor(.white, for: .normal)
@@ -123,3 +122,9 @@ class TimerView: UIView {
         NSLayoutConstraint.activate([titleTop, titleLeading, titleTrailing, timerTop, timerLeading, timerTrailing, buttonBottom, buttonCenter, buttonMaxWidth])
     }
 }
+
+
+// pad the button
+// make the button press
+// organize the files / functions
+// add math labels for meter and feet, readjust the timer label up

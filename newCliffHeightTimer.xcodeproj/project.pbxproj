@@ -13,8 +13,9 @@
 		A4D49E672411C175002518E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4D49E652411C175002518E0 /* Main.storyboard */; };
 		A4D49E692411C178002518E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4D49E682411C178002518E0 /* Assets.xcassets */; };
 		A4D49E6C2411C178002518E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4D49E6A2411C178002518E0 /* LaunchScreen.storyboard */; };
-		A4D49E772411C178002518E0 /* newCliffHeightTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D49E762411C178002518E0 /* newCliffHeightTimerTests.swift */; };
+		A4D49E772411C178002518E0 /* LabelFormatterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D49E762411C178002518E0 /* LabelFormatterTest.swift */; };
 		A4D49E822411C178002518E0 /* newCliffHeightTimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D49E812411C178002518E0 /* newCliffHeightTimerUITests.swift */; };
+		A4D49E90241AF6C3002518E0 /* LabelFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D49E8F241AF6C3002518E0 /* LabelFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,11 +45,12 @@
 		A4D49E6B2411C178002518E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A4D49E6D2411C178002518E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4D49E722411C178002518E0 /* newCliffHeightTimerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = newCliffHeightTimerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A4D49E762411C178002518E0 /* newCliffHeightTimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newCliffHeightTimerTests.swift; sourceTree = "<group>"; };
+		A4D49E762411C178002518E0 /* LabelFormatterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFormatterTest.swift; sourceTree = "<group>"; };
 		A4D49E782411C178002518E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4D49E7D2411C178002518E0 /* newCliffHeightTimerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = newCliffHeightTimerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4D49E812411C178002518E0 /* newCliffHeightTimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newCliffHeightTimerUITests.swift; sourceTree = "<group>"; };
 		A4D49E832411C178002518E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A4D49E8F241AF6C3002518E0 /* LabelFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				A4D49E682411C178002518E0 /* Assets.xcassets */,
 				A4D49E6A2411C178002518E0 /* LaunchScreen.storyboard */,
 				A4D49E6D2411C178002518E0 /* Info.plist */,
+				A4D49E8F241AF6C3002518E0 /* LabelFormatter.swift */,
 			);
 			path = newCliffHeightTimer;
 			sourceTree = "<group>";
@@ -113,7 +116,7 @@
 		A4D49E752411C178002518E0 /* newCliffHeightTimerTests */ = {
 			isa = PBXGroup;
 			children = (
-				A4D49E762411C178002518E0 /* newCliffHeightTimerTests.swift */,
+				A4D49E762411C178002518E0 /* LabelFormatterTest.swift */,
 				A4D49E782411C178002518E0 /* Info.plist */,
 			);
 			path = newCliffHeightTimerTests;
@@ -261,6 +264,7 @@
 			files = (
 				A4D49E642411C175002518E0 /* ViewController.swift in Sources */,
 				A4D49E602411C175002518E0 /* AppDelegate.swift in Sources */,
+				A4D49E90241AF6C3002518E0 /* LabelFormatter.swift in Sources */,
 				A4D49E622411C175002518E0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,7 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4D49E772411C178002518E0 /* newCliffHeightTimerTests.swift in Sources */,
+				A4D49E772411C178002518E0 /* LabelFormatterTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

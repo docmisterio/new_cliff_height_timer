@@ -73,11 +73,3 @@ class ViewController: UIViewController {
 // make the button press / buttonSubClass
 // organize the files / functions
 // add math labels for meter and feet, readjust the timer label up
-
-class Thing: UIButton {
-    override var isHighlighted: Bool {
-        didSet {
-            // doStuff
-        }
-    }
-}

@@ -10,9 +10,6 @@
 		A403D216242836AF00F02EE1 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A403D215242836AF00F02EE1 /* TimerView.swift */; };
 		A403D217242836AF00F02EE1 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A403D215242836AF00F02EE1 /* TimerView.swift */; };
 		A403D218242836AF00F02EE1 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A403D215242836AF00F02EE1 /* TimerView.swift */; };
-		A403D21A24285DE000F02EE1 /* TheButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A403D21924285DE000F02EE1 /* TheButton.swift */; };
-		A403D21B24285DE000F02EE1 /* TheButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A403D21924285DE000F02EE1 /* TheButton.swift */; };
-		A403D21C24285DE000F02EE1 /* TheButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A403D21924285DE000F02EE1 /* TheButton.swift */; };
 		A4D49E602411C175002518E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D49E5F2411C175002518E0 /* AppDelegate.swift */; };
 		A4D49E622411C175002518E0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D49E612411C175002518E0 /* SceneDelegate.swift */; };
 		A4D49E642411C175002518E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D49E632411C175002518E0 /* ViewController.swift */; };
@@ -43,7 +40,6 @@
 
 /* Begin PBXFileReference section */
 		A403D215242836AF00F02EE1 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
-		A403D21924285DE000F02EE1 /* TheButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheButton.swift; sourceTree = "<group>"; };
 		A4D49E5C2411C175002518E0 /* newCliffHeightTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = newCliffHeightTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4D49E5F2411C175002518E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4D49E612411C175002518E0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,7 +85,6 @@
 		A4D49E532411C175002518E0 = {
 			isa = PBXGroup;
 			children = (
-				A403D21924285DE000F02EE1 /* TheButton.swift */,
 				A4D49E5E2411C175002518E0 /* newCliffHeightTimer */,
 				A4D49E752411C178002518E0 /* newCliffHeightTimerTests */,
 				A4D49E802411C178002518E0 /* newCliffHeightTimerUITests */,
@@ -275,7 +270,6 @@
 				A403D216242836AF00F02EE1 /* TimerView.swift in Sources */,
 				A4D49E642411C175002518E0 /* ViewController.swift in Sources */,
 				A4D49E602411C175002518E0 /* AppDelegate.swift in Sources */,
-				A403D21A24285DE000F02EE1 /* TheButton.swift in Sources */,
 				A4D49E90241AF6C3002518E0 /* LabelFormatter.swift in Sources */,
 				A4D49E622411C175002518E0 /* SceneDelegate.swift in Sources */,
 			);
@@ -285,7 +279,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A403D21B24285DE000F02EE1 /* TheButton.swift in Sources */,
 				A403D217242836AF00F02EE1 /* TimerView.swift in Sources */,
 				A4D49E772411C178002518E0 /* LabelFormatterTest.swift in Sources */,
 			);
@@ -295,7 +288,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A403D21C24285DE000F02EE1 /* TheButton.swift in Sources */,
 				A403D218242836AF00F02EE1 /* TimerView.swift in Sources */,
 				A4D49E822411C178002518E0 /* newCliffHeightTimerUITests.swift in Sources */,
 			);

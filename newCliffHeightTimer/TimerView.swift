@@ -4,14 +4,26 @@ class TimerView: UIView {
     let titleLabel = UILabel()
     let timerLabel = UILabel()
     let actionButton = UIButton()
+    let feetLabel = UILabel()
+    let meterLabel = UILabel()
+    let labelContainer: UIStackView
     
     let startLabel = "START"
     
+    enum TimerState {
+        case ready
+        case running
+        case stopped
+    }
+    
     override init(frame: CGRect) {
+        self.labelContainer = UIStackView(arrangedSubviews: [timerLabel, feetLabel, meterLabel])
+        labelContainer.axis = .vertical
+        labelContainer.spacing = 75.0
         super.init(frame: frame)
         
         addSubview(titleLabel)
-        addSubview(timerLabel)
+        addSubview(labelContainer)
         addSubview(actionButton)
         
         titleLabel.text = "Cliff Height Timer"
@@ -20,8 +32,13 @@ class TimerView: UIView {
         
         timerLabel.text = "0.00"
         timerLabel.textColor = .white
+        feetLabel.textColor = .white
+        meterLabel.textColor = .white
         timerLabel.textAlignment = .center
+        feetLabel.textAlignment = .center
+        meterLabel.textAlignment = .center
         
+
         actionButton.backgroundColor = .white
         actionButton.layer.cornerRadius = 5.0
         actionButton.setTitle(startLabel, for: .normal)
@@ -32,6 +49,35 @@ class TimerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setState(_ state: TimerState) {
+        switch state {
+        case .ready:
+            actionButton.backgroundColor = .white
+            actionButton.setTitle("START", for: .normal)
+            actionButton.setTitleColor(.blue, for: .normal)
+            feetLabel.text = "0.00"
+            meterLabel.text = "0.00"
+            feetLabel.alpha = 0
+            meterLabel.alpha = 0
+        case .running:
+            actionButton.setTitle("STOP", for: .normal)
+            actionButton.setTitleColor(.white, for: .normal)
+            actionButton.backgroundColor = .red
+            feetLabel.text = "0.00"
+            meterLabel.text = "0.00"
+            feetLabel.alpha = 0
+            meterLabel.alpha = 0
+        case .stopped:
+            actionButton.setTitle("RESET", for: .normal)
+            actionButton.setTitleColor(.black, for: .normal)
+            actionButton.backgroundColor = .white
+            feetLabel.text = "0.00"
+            meterLabel.text = "0.00"
+            feetLabel.alpha = 1
+            meterLabel.alpha = 1
+        }
+    }
+    
     func installContraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -39,11 +85,11 @@ class TimerView: UIView {
         let titleLeading = NSLayoutConstraint(item: titleLabel, attribute: .leading, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .leading, multiplier: 1, constant: 10)
         let titleTrailing = NSLayoutConstraint(item: titleLabel, attribute: .trailing, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .trailing, multiplier: 1, constant: -10)
         
-        timerLabel.translatesAutoresizingMaskIntoConstraints = false
+        labelContainer.translatesAutoresizingMaskIntoConstraints = false
         
-        let timerTop = NSLayoutConstraint(item: timerLabel, attribute: .centerY, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .centerY, multiplier: 1, constant: 0)
-        let timerLeading = NSLayoutConstraint(item: timerLabel, attribute: .leading, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .leading, multiplier: 1, constant: 10)
-        let timerTrailing = NSLayoutConstraint(item: timerLabel, attribute: .trailing, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .trailing, multiplier: 1, constant: -10)
+        let containerTop = NSLayoutConstraint(item: labelContainer, attribute: .centerY, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .centerY, multiplier: 1, constant: 0)
+        let containerLeading = NSLayoutConstraint(item: labelContainer, attribute: .leading, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .leading, multiplier: 1, constant: 10)
+        let containerTrailing = NSLayoutConstraint(item: labelContainer, attribute: .trailing, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .trailing, multiplier: 1, constant: -10)
         
         actionButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -51,6 +97,6 @@ class TimerView: UIView {
         let buttonCenter = NSLayoutConstraint(item: actionButton, attribute: .centerX, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .centerX, multiplier: 1, constant: 0)
         let buttonMaxWidth = NSLayoutConstraint(item: actionButton, attribute: .width, relatedBy: .lessThanOrEqual, toItem: self.safeAreaLayoutGuide, attribute: .width, multiplier: 1, constant: -20)
         
-        NSLayoutConstraint.activate([titleTop, titleLeading, titleTrailing, timerTop, timerLeading, timerTrailing, buttonBottom, buttonCenter, buttonMaxWidth])
+        NSLayoutConstraint.activate([titleTop, titleLeading, titleTrailing, containerTop, containerLeading, containerTrailing, buttonBottom, buttonCenter, buttonMaxWidth])
     }
 }

@@ -9,6 +9,7 @@ class ViewController: UIViewController {
         }
     }
     private let labelFormatter = LabelFormatter()
+    var formattedDuration = ""
     
     override func loadView() {
         view = timerView
@@ -18,44 +19,45 @@ class ViewController: UIViewController {
     }
     
     @objc func buttonTapped() {
-           switch timerState {
-           case .ready:
-               startTapped()
-           case .running:
-               stopTapped()
-           case .stopped:
-               resetTapped()
-           }
-       }
-       
-       func startTapped() {
-           timerState = .running
-           print("start tapped")
-           activeTimer?.invalidate()
-           
-           let startDate = Date()
-           activeTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { _ in
-               let currentDate = Date()
-               let duration = currentDate.timeIntervalSince(startDate)
-               
-               let formattedDuration = self.labelFormatter.format(duration)
-               
-               self.timerView.timerLabel.text = formattedDuration
-           })
-           
-       }
-       
-       func stopTapped() {
-           timerState = .stopped
-           print("stop tapped")
-           activeTimer?.invalidate()
-       }
-       
-       func resetTapped() {
-           timerState = .ready
-           print("reset tapped")
-           timerView.timerLabel.text = "0.00"
-       }
+        switch timerState {
+        case .ready:
+            startTapped()
+        case .running:
+            stopTapped()
+        case .stopped:
+            resetTapped()
+        }
+    }
+    
+    func startTapped() {
+        timerState = .running
+        print("start tapped")
+        activeTimer?.invalidate()
+        
+        let startDate = Date()
+        activeTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { _ in
+            let currentDate = Date()
+            let duration = currentDate.timeIntervalSince(startDate)
+            
+            self.formattedDuration = self.labelFormatter.format(duration)
+            
+            self.timerView.timerLabel.text = self.formattedDuration
+        })
+        
+    }
+    
+    func stopTapped() {
+        timerState = .stopped
+        print("stop tapped")
+        print(formattedDuration)
+        activeTimer?.invalidate()
+    }
+    
+    func resetTapped() {
+        timerState = .ready
+        print("reset tapped")
+        timerView.timerLabel.text = "0.00"
+    }
 }
 
 // pad the button

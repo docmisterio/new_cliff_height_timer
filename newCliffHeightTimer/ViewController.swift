@@ -5,6 +5,8 @@ class ViewController: UIViewController {
     private var activeTimer: Timer?
     private var timerState: TimerState = .ready
     private let labelFormatter = LabelFormatter()
+    private let feetFormatter = LabelFormatter(1)
+    private var duration = 0.0
     
     enum TimerState {
         case ready
@@ -37,11 +39,9 @@ class ViewController: UIViewController {
         let startDate = Date()
         activeTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: { _ in
             let currentDate = Date()
-            let duration = currentDate.timeIntervalSince(startDate)
+            self.duration = currentDate.timeIntervalSince(startDate)
             
-            let formattedDuration = self.labelFormatter.format(duration)
-            
-            self.timerView.timerLabel.text = formattedDuration
+            self.timerView.timerLabel.text = self.labelFormatter.format(self.duration)
         })
         timerView.actionButton.setTitle("STOP", for: .normal)
         timerView.actionButton.setTitleColor(.white, for: .normal)
@@ -56,6 +56,8 @@ class ViewController: UIViewController {
         timerView.actionButton.setTitle("RESET", for: .normal)
         timerView.actionButton.setTitleColor(.black, for: .normal)
         timerView.actionButton.backgroundColor = .white
+        
+        timerView.timerLabel.text = labelFormatter.durationInFeet(duration)
     }
     
     func resetTapped() {

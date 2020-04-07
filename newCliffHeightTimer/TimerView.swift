@@ -29,15 +29,21 @@ class TimerView: UIView {
         titleLabel.text = "Cliff Height Timer"
         titleLabel.textColor = .white
         titleLabel.textAlignment = .center
+        titleLabel.font = titleLabel.font.withSize(40)
         
         timerLabel.text = "0.00"
         timerLabel.textColor = .white
-        feetLabel.textColor = .white
-        meterLabel.textColor = .white
         timerLabel.textAlignment = .center
-        feetLabel.textAlignment = .center
-        meterLabel.textAlignment = .center
+        timerLabel.font = timerLabel.font.withSize(60)
+
         
+        feetLabel.textColor = .white
+        feetLabel.textAlignment = .center
+        feetLabel.font = feetLabel.font.withSize(60)
+
+        meterLabel.textColor = .white
+        meterLabel.textAlignment = .center
+        meterLabel.font = meterLabel.font.withSize(60)
 
         actionButton.backgroundColor = .white
         actionButton.layer.cornerRadius = 5.0

@@ -9,7 +9,7 @@ class ViewController: UIViewController {
         }
     }
     private let labelFormatter = LabelFormatter()
-    var formattedDuration = ""
+    var formattedDuration = 0.00
     
     override func loadView() {
         view = timerView
@@ -39,9 +39,9 @@ class ViewController: UIViewController {
             let currentDate = Date()
             let duration = currentDate.timeIntervalSince(startDate)
             
-            self.formattedDuration = self.labelFormatter.format(duration)
-            
-            self.timerView.timerLabel.text = self.formattedDuration
+            self.formattedDuration = duration
+                        
+            self.timerView.timerLabel.text = self.labelFormatter.format(duration)
         })
         
     }
@@ -49,7 +49,7 @@ class ViewController: UIViewController {
     func stopTapped() {
         timerState = .stopped
         print("stop tapped")
-        print(formattedDuration)
+        self.timerView.feetLabel.text = self.labelFormatter.format(things)
         activeTimer?.invalidate()
     }
     

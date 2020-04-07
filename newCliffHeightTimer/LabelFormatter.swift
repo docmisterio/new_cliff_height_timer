@@ -10,8 +10,9 @@ struct LabelFormatter {
         numberFormatter.maximumFractionDigits = 2
         
         let formattedNumber = numberFormatter.string(from: NSNumber(value: value))
-
+        
         return formattedNumber ?? ""
         // look up nil coelessing
     }
 }
+

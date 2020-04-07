@@ -49,7 +49,10 @@ class ViewController: UIViewController {
     func stopTapped() {
         timerState = .stopped
         print("stop tapped")
-        self.timerView.feetLabel.text = self.labelFormatter.format(things)
+        let duration = String(formattedDuration)
+        
+        self.timerView.feetLabel.text = "\(self.labelFormatter.durationInFeet(duration)) ft"
+        self.timerView.meterLabel.text = "\(self.labelFormatter.durationInMeters(duration)) m"
         activeTimer?.invalidate()
     }
     
@@ -60,8 +63,6 @@ class ViewController: UIViewController {
     }
 }
 
-// pad the button
 // make button same size no matter what state it's in
-// add math labels for meter and feet, readjust the timer label up
 
 

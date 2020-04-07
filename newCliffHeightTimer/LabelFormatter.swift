@@ -14,5 +14,16 @@ struct LabelFormatter {
         return formattedNumber ?? ""
         // look up nil coelessing
     }
+    
+    func durationInFeet(_ duration: String) -> String {
+        let myDuration = Double(duration)
+        return format(myDuration! * myDuration! * 16)
+    }
+    
+    func durationInMeters(_ duration: String) -> String {
+        let myDuration = Double(duration)
+        return format(myDuration! * myDuration! * 16 * 0.3)
+        
+    }
 }
 

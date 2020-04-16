@@ -45,7 +45,7 @@ class TimerView: UIView {
         meterLabel.textAlignment = .center
         meterLabel.font = meterLabel.font.withSize(60)
 
-        actionButton.backgroundColor = .white
+//        actionButton.backgroundColor = .white
         actionButton.layer.cornerRadius = 5.0
         actionButton.setTitle(startLabel, for: .normal)
         actionButton.setTitleColor(.blue, for: .normal)
@@ -58,25 +58,25 @@ class TimerView: UIView {
     func setState(_ state: TimerState) {
         switch state {
         case .ready:
-            actionButton.backgroundColor = .white
             actionButton.setTitle("START", for: .normal)
-            actionButton.setTitleColor(.blue, for: .normal)
+            actionButton.setTitleColor(.white, for: .normal)
+            actionButton.titleLabel?.font = UIFont.systemFont(ofSize: 80)
             feetLabel.text = "0.00"
             meterLabel.text = "0.00"
             feetLabel.alpha = 0
             meterLabel.alpha = 0
         case .running:
             actionButton.setTitle("STOP", for: .normal)
-            actionButton.setTitleColor(.white, for: .normal)
-            actionButton.backgroundColor = .red
+            actionButton.setTitleColor(.red, for: .normal)
+            actionButton.titleLabel?.font = UIFont.systemFont(ofSize: 80)
             feetLabel.text = "0.00"
             meterLabel.text = "0.00"
             feetLabel.alpha = 0
             meterLabel.alpha = 0
         case .stopped:
             actionButton.setTitle("RESET", for: .normal)
-            actionButton.setTitleColor(.black, for: .normal)
-            actionButton.backgroundColor = .white
+            actionButton.setTitleColor(.white, for: .normal)
+            actionButton.titleLabel?.font = UIFont.systemFont(ofSize: 80)
             feetLabel.text = "0.00"
             meterLabel.text = "0.00"
             feetLabel.alpha = 1

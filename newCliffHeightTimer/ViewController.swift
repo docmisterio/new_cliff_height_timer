@@ -63,6 +63,3 @@ class ViewController: UIViewController {
     }
 }
 
-// make button same size no matter what state it's in
-
-

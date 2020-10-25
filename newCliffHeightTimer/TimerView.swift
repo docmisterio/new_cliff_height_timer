@@ -46,7 +46,7 @@ class TimerView: UIView {
         meterLabel.font = meterLabel.font.withSize(60)
 
 //        actionButton.backgroundColor = .white
-        actionButton.layer.cornerRadius = 5.0
+//        actionButton.layer.cornerRadius = 5.0
         actionButton.setTitle(startLabel, for: .normal)
         actionButton.setTitleColor(.blue, for: .normal)
     }

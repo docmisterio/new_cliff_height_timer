@@ -29,14 +29,14 @@ class TimerView: UIView {
         startButton.setTitleColor(.blue, for: .normal)
         return startButton
     }()
-    let feetLabel: UILabel = {
+    var feetLabel: UILabel = {
         let ftLabel = UILabel()
         ftLabel.textColor = .white
         ftLabel.textAlignment = .center
         ftLabel.font = ftLabel.font.withSize(60)
         return ftLabel
     }()
-    let meterLabel: UILabel = {
+    var meterLabel: UILabel = {
         let mtLabel = UILabel()
         mtLabel.textColor = .white
         mtLabel.textAlignment = .center

@@ -49,16 +49,30 @@ class MainViewController: UIViewController {
     func stopTapped() {
         timerState = .stopped
         let duration = String(formattedDuration)
+        let feetLabel = timerView.feetLabel
+        let meterLabel = timerView.meterLabel
         
-        self.timerView.feetLabel.text = "\(self.labelFormatter.durationInFeet(duration)) ft"
-        self.timerView.meterLabel.text = "\(self.labelFormatter.durationInMeters(duration)) m"
+        transition(label: feetLabel, to: "\(self.labelFormatter.durationInFeet(duration)) ft")
+        transition(label: meterLabel, to: "\(self.labelFormatter.durationInMeters(duration)) m")
+        
         activeTimer?.invalidate()
     }
     
     func resetTapped() {
         timerState = .ready
-        print("reset tapped")
         timerView.timerLabel.text = "0.00"
+    }
+    
+    func transition(label: UILabel, to thisString: String) {
+        let transition = CATransition()
+        transition.duration = 0.2
+        
+        CATransaction.begin()
+        CATransaction.setCompletionBlock({ [] in
+            label.text = thisString
+            label.layer.add(transition, forKey: kCATransition)
+        })
+        CATransaction.commit()
     }
 }
 

@@ -7,9 +7,7 @@ struct LabelFormatter {
         numberFormatter.minimumIntegerDigits = 1
         numberFormatter.minimumFractionDigits = 2
         numberFormatter.maximumFractionDigits = 2
-        
         guard let formattedNumber = numberFormatter.string(from: NSNumber(value: value)) else { return "Illegal Error. Don't do that." }
-        
         return formattedNumber
     }
     
@@ -21,7 +19,6 @@ struct LabelFormatter {
     func durationInMeters(_ duration: String) -> String {
         let myDuration = Double(duration)
         return format(myDuration! * myDuration! * 16 * 0.3)
-        
     }
 }
 

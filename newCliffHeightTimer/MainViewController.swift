@@ -8,6 +8,7 @@ class MainViewController: UIViewController {
             timerView.setState(timerState)
         }
     }
+    
     private let labelFormatter = LabelFormatter()
     var formattedDuration = 0.00
     
@@ -33,7 +34,6 @@ class MainViewController: UIViewController {
     
     func startTapped() {
         timerState = .running
-        print("start tapped")
         activeTimer?.invalidate()
         
         let startDate = Date()
@@ -42,15 +42,11 @@ class MainViewController: UIViewController {
             let duration = currentDate.timeIntervalSince(startDate)
             
             self.formattedDuration = duration
-                        
             self.timerView.timerLabel.text = self.labelFormatter.format(duration)
         })
-        
     }
     
     func stopTapped() {
-        timerState = .stopped
-        print("stop tapped")
         let duration = String(formattedDuration)
         
         self.timerView.feetLabel.text = "\(self.labelFormatter.durationInFeet(duration)) ft"

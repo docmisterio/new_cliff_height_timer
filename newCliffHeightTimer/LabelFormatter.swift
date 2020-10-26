@@ -10,8 +10,7 @@ struct LabelFormatter {
         
         let formattedNumber = numberFormatter.string(from: NSNumber(value: value))
         
-        return formattedNumber ?? ""
-        // look up nil coelessing
+        return formattedNumber ?? "no number was formatted. format error. phone will explode in 0:05"
     }
     
     func durationInFeet(_ duration: String) -> String {

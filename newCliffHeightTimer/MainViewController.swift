@@ -47,6 +47,7 @@ class MainViewController: UIViewController {
     }
     
     func stopTapped() {
+        timerState = .stopped
         let duration = String(formattedDuration)
         
         self.timerView.feetLabel.text = "\(self.labelFormatter.durationInFeet(duration)) ft"

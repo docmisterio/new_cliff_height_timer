@@ -8,9 +8,9 @@ struct LabelFormatter {
         numberFormatter.minimumFractionDigits = 2
         numberFormatter.maximumFractionDigits = 2
         
-        let formattedNumber = numberFormatter.string(from: NSNumber(value: value))
+        guard let formattedNumber = numberFormatter.string(from: NSNumber(value: value)) else { return "Illegal Error. Don't do that." }
         
-        return formattedNumber ?? "no number was formatted. format error. phone will explode in 0:05"
+        return formattedNumber
     }
     
     func durationInFeet(_ duration: String) -> String {

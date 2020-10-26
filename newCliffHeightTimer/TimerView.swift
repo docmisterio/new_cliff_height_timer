@@ -99,16 +99,16 @@ class TimerView: UIView {
     
     func installLabelContainerConstraints() {
         labelContainer.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint(item: labelContainer, attribute: .centerY, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
-        labelContainer.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
-        NSLayoutConstraint(item: labelContainer, attribute: .leading, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .leading, multiplier: 1, constant: 10).isActive = true
-        NSLayoutConstraint(item: labelContainer, attribute: .trailing, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .trailing, multiplier: 1, constant: -10).isActive = true
+        labelContainer.topAnchor.constraint(equalTo: centerYAnchor, constant: -200).isActive = true
+        labelContainer.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        labelContainer.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
     }
     
     func installButtonConstraints() {
         actionButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: actionButton, attribute: .bottom, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: 10).isActive = true
-        NSLayoutConstraint(item: actionButton, attribute: .centerX, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
-        NSLayoutConstraint(item: actionButton, attribute: .width, relatedBy: .lessThanOrEqual, toItem: self.safeAreaLayoutGuide, attribute: .width, multiplier: 1, constant: -20).isActive = true
+        actionButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15).isActive = true
+        actionButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        actionButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        actionButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
     }
 }

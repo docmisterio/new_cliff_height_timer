@@ -1,21 +1,50 @@
 import UIKit
 
 class TimerView: UIView {
-    let titleLabel = UILabel()
-    let timerLabel = UILabel()
-    let actionButton = UIButton()
-    let feetLabel = UILabel()
-    let meterLabel = UILabel()
-    let labelContainer: UIStackView
-    
-    let startLabel = "START"
-    
     enum TimerState {
-        case ready
-        case running
-        case stopped
+        case ready, running, stopped
     }
+    //declaring things this way makes me feel like I can think it through as I'm doing it.
+    // don't REALLY understand the closure part of it.
     
+    let titleLabel: UILabel = {
+        let htLabel = UILabel()
+        htLabel.text = "Cliff Height Timer"
+        htLabel.textColor = .white
+        htLabel.textAlignment = .center
+        htLabel.font = htLabel.font.withSize(40)
+        return htLabel
+    }()
+    let timerLabel: UILabel = {
+        let mainTimerLabel = UILabel()
+        mainTimerLabel.text = "0.00"
+        mainTimerLabel.textColor = .white
+        mainTimerLabel.textAlignment = .center
+        mainTimerLabel.font = mainTimerLabel.font.withSize(60)
+        return mainTimerLabel
+    }()
+    let actionButton: UIButton = {
+        let startButton = UIButton()
+        startButton.setTitle("START", for: .normal)
+        startButton.setTitleColor(.blue, for: .normal)
+        return startButton
+    }()
+    let feetLabel: UILabel = {
+        let ftLabel = UILabel()
+        ftLabel.textColor = .white
+        ftLabel.textAlignment = .center
+        ftLabel.font = ftLabel.font.withSize(60)
+        return ftLabel
+    }()
+    let meterLabel: UILabel = {
+        let mtLabel = UILabel()
+        mtLabel.textColor = .white
+        mtLabel.textAlignment = .center
+        mtLabel.font = mtLabel.font.withSize(60)
+        return mtLabel
+    }()
+    let labelContainer: UIStackView
+
     override init(frame: CGRect) {
         self.labelContainer = UIStackView(arrangedSubviews: [timerLabel, feetLabel, meterLabel])
         labelContainer.axis = .vertical
@@ -25,30 +54,6 @@ class TimerView: UIView {
         addSubview(titleLabel)
         addSubview(labelContainer)
         addSubview(actionButton)
-        
-        titleLabel.text = "Cliff Height Timer"
-        titleLabel.textColor = .white
-        titleLabel.textAlignment = .center
-        titleLabel.font = titleLabel.font.withSize(40)
-        
-        timerLabel.text = "0.00"
-        timerLabel.textColor = .white
-        timerLabel.textAlignment = .center
-        timerLabel.font = timerLabel.font.withSize(60)
-
-        
-        feetLabel.textColor = .white
-        feetLabel.textAlignment = .center
-        feetLabel.font = feetLabel.font.withSize(60)
-
-        meterLabel.textColor = .white
-        meterLabel.textAlignment = .center
-        meterLabel.font = meterLabel.font.withSize(60)
-
-//        actionButton.backgroundColor = .white
-//        actionButton.layer.cornerRadius = 5.0
-        actionButton.setTitle(startLabel, for: .normal)
-        actionButton.setTitleColor(.blue, for: .normal)
     }
     
     required init?(coder: NSCoder) {
@@ -84,25 +89,26 @@ class TimerView: UIView {
         }
     }
     
-    func installContraints() {
+    func installTitleConstraints() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        let titleTop = NSLayoutConstraint(item: titleLabel, attribute: .top, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .top, multiplier: 1, constant: 10)
-        let titleLeading = NSLayoutConstraint(item: titleLabel, attribute: .leading, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .leading, multiplier: 1, constant: 10)
-        let titleTrailing = NSLayoutConstraint(item: titleLabel, attribute: .trailing, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .trailing, multiplier: 1, constant: -10)
-        
+        titleLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        titleLabel.bottomAnchor.constraint(equalTo: labelContainer.topAnchor).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+    }
+    
+    func installLabelContainerConstraints() {
         labelContainer.translatesAutoresizingMaskIntoConstraints = false
-        
-        let containerTop = NSLayoutConstraint(item: labelContainer, attribute: .centerY, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .centerY, multiplier: 1, constant: 0)
-        let containerLeading = NSLayoutConstraint(item: labelContainer, attribute: .leading, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .leading, multiplier: 1, constant: 10)
-        let containerTrailing = NSLayoutConstraint(item: labelContainer, attribute: .trailing, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .trailing, multiplier: 1, constant: -10)
-        
+//        NSLayoutConstraint(item: labelContainer, attribute: .centerY, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .centerY, multiplier: 1, constant: 0).isActive = true
+        labelContainer.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
+        NSLayoutConstraint(item: labelContainer, attribute: .leading, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .leading, multiplier: 1, constant: 10).isActive = true
+        NSLayoutConstraint(item: labelContainer, attribute: .trailing, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .trailing, multiplier: 1, constant: -10).isActive = true
+    }
+    
+    func installButtonConstraints() {
         actionButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        let buttonBottom = NSLayoutConstraint(item: actionButton, attribute: .bottom, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: 10)
-        let buttonCenter = NSLayoutConstraint(item: actionButton, attribute: .centerX, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .centerX, multiplier: 1, constant: 0)
-        let buttonMaxWidth = NSLayoutConstraint(item: actionButton, attribute: .width, relatedBy: .lessThanOrEqual, toItem: self.safeAreaLayoutGuide, attribute: .width, multiplier: 1, constant: -20)
-        
-        NSLayoutConstraint.activate([titleTop, titleLeading, titleTrailing, containerTop, containerLeading, containerTrailing, buttonBottom, buttonCenter, buttonMaxWidth])
+        NSLayoutConstraint(item: actionButton, attribute: .bottom, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: 10).isActive = true
+        NSLayoutConstraint(item: actionButton, attribute: .centerX, relatedBy: .equal, toItem: self.safeAreaLayoutGuide, attribute: .centerX, multiplier: 1, constant: 0).isActive = true
+        NSLayoutConstraint(item: actionButton, attribute: .width, relatedBy: .lessThanOrEqual, toItem: self.safeAreaLayoutGuide, attribute: .width, multiplier: 1, constant: -20).isActive = true
     }
 }

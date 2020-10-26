@@ -14,7 +14,9 @@ class MainViewController: UIViewController {
     override func loadView() {
         view = timerView
         timerView.setState(.ready)
-        timerView.installContraints()
+        timerView.installTitleConstraints()
+        timerView.installLabelContainerConstraints()
+        timerView.installButtonConstraints()
         timerView.actionButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
     

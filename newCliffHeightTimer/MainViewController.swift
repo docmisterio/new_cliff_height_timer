@@ -1,6 +1,6 @@
 import UIKit
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     private lazy var timerView = TimerView()
     private var activeTimer: Timer?
     private var timerState: TimerView.TimerState = .ready {

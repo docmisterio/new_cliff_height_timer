@@ -52,8 +52,8 @@ class MainViewController: UIViewController {
         let feetLabel = timerView.feetLabel
         let meterLabel = timerView.meterLabel
         
-        transition(label: feetLabel, to: "\(self.labelFormatter.durationInFeet(duration)) ft")
-        transition(label: meterLabel, to: "\(self.labelFormatter.durationInMeters(duration)) m")
+        transition(the: feetLabel, to: "\(self.labelFormatter.durationInFeet(duration)) ft")
+        transition(the: meterLabel, to: "\(self.labelFormatter.durationInMeters(duration)) m")
         
         activeTimer?.invalidate()
     }
@@ -63,7 +63,7 @@ class MainViewController: UIViewController {
         timerView.timerLabel.text = "0.00"
     }
     
-    func transition(label: UILabel, to thisString: String) {
+    func transition(the label: UILabel, to thisString: String) {
         let transition = CATransition()
         transition.duration = 0.2
         
